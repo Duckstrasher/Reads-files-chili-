@@ -16,29 +16,21 @@ int main() {
 	
 	if (arielFile.is_open()) {
 		cout << "The file was opened:\n";
-		//reads formatted txt and pushes back to appropriate vector
-		while (arielFile >> tname >> tsalary) {
-			names.push_back(tname);
-			salary.push_back(tsalary);
+		//reads char form txt and places in c, put c
+		for (char c = arielFile.get(); arielFile.good(); c = arielFile.get()) {
+			_putch(c);
 		}
+
 	}
-	else if (!arielFile.is_open()) {
-		cout << "The file could not be opened" << endl;
+	else if (arielFile.bad() ) {
+		cout << "Failed to open document" << endl;
+
 	}
-	else {
-		cout << "IDK WTf" << endl;
+	else if (arielFile.eof()) {
+		cout << "Reached end of file succesfully" << endl;
 	}
 	cout << "The file has been read:\n" << endl;
-	for (unsigned int i = 0; i < names.size(); i++) {
-		cout << names[i] << "'s salary is: \t" << salary[i] << endl;
-	}
-	ofstream writeAriel;
-	writeAriel.open("chili.txt");
-		if (!writeAriel.is_open()) {
-			cout << "The file was not opened succesfully" << endl;
-	}
-
-		writeAriel << "This is bucky´s method of writing to a file" << endl;
-		writeAriel.close();
+	
+	cout << "Goodbye, thank you for using my program" << endl;
 	return 0;
 }
