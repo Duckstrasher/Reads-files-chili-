@@ -1,5 +1,1 @@
-Ariel 16000
-Maria 20000
-Gutierrez 8000
-javier 4000
-Demian 7000
+This is bucky´s method of writing to a file
