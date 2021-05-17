@@ -4,12 +4,24 @@
 using namespace std;
 
 int main() {
-	ifstream in("chili.txt");
+	ifstream arielFile;
+	arielFile.open("Essay.docx");
+	if (arielFile.is_open()) {
 
-	for (char c = in.get(); in.good(); c = in.get()) {
-		_putch(c);
+		
+		cout << "k, the file is open" << endl;
+		for (char c = arielFile.get(); arielFile.good(); c = arielFile.get()) {
+			_putch(c);
+		}
 	}
-
+	else {
+		cout << "The file was closed succesfully" << endl;
+	}
+	
+	arielFile.close();
+	if (!arielFile.is_open()) {
+		cout << "dude, we closed rthe file" << endl;
+	}
 	while (!_kbhit);
 	return 0;
 }
