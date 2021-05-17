@@ -1,28 +1,33 @@
 #include <conio.h>
 #include <fstream>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main() {
+	vector<string> names;
+	vector<double> salary;
+	string tname;
+	double tsalary;
 	ifstream arielFile;
 	arielFile.open("chili.txt");
+	
 	if (arielFile.is_open()) {
-
-		
-		cout << "k, the file is open\n" << endl;
-		for (char c = arielFile.get(); arielFile.good(); c = arielFile.get()) {
-			_putch(c);
+		while (arielFile >> tname >> tsalary) {
+			names.push_back(tname);
+			salary.push_back(tsalary);
 		}
 	}
-
-	if (arielFile.bad()) {
-		cout << "Bad" << endl;
-	}
-	else if (arielFile.eof()) {
-		cout << "\n\nSuccesfully reached end of file" << endl;
+	else if (!arielFile.is_open()) {
+		cout << "The file could not be opened" << endl;
 	}
 	else {
-		cout << "Some wierd error" << endl;
+		cout << "IDK WTf" << endl;
+	}
+	cout << "The file has been read:\n" << endl;
+
+	for (int i = 0; i < sizeof(names); i++) {
+		cout << names[i] << ":\t" << salary[i] << endl;
 	}
 	while (!_kbhit);
 	return 0;

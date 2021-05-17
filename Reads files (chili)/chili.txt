@@ -1,3 +1,5 @@
-sasori
-scoprion
-v3
+Ariel 16000
+Maria 20000
+Gutierrez 8000
+javier 4000
+Demian 7000
