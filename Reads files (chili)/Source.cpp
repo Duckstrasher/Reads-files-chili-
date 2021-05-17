@@ -4,6 +4,8 @@
 #include <vector>
 using namespace std;
 
+
+
 int main() {
 	vector<string> names;
 	vector<double> salary;
@@ -13,6 +15,8 @@ int main() {
 	arielFile.open("chili.txt");
 	
 	if (arielFile.is_open()) {
+		cout << "The file was opened:\n";
+		//reads formatted txt and pushes back to appropriate vector
 		while (arielFile >> tname >> tsalary) {
 			names.push_back(tname);
 			salary.push_back(tsalary);
@@ -25,10 +29,11 @@ int main() {
 		cout << "IDK WTf" << endl;
 	}
 	cout << "The file has been read:\n" << endl;
+	int i = 0;
+	while ( i < salary.size() ){
+		cout << "Name: " << names[i] << "'s salary is: " << salary[i] << endl;
 
-	for (int i = 0; i < sizeof(names); i++) {
-		cout << names[i] << ":\t" << salary[i] << endl;
+		i++;
 	}
-	while (!_kbhit);
 	return 0;
 }
