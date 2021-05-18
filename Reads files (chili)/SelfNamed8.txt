@@ -1,0 +1,5 @@
+
+I found this option on the internet
+i think it will automatically make the file a text doument
+while still being able to let the user input the files
+name

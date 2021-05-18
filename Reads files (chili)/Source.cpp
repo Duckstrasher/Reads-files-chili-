@@ -4,33 +4,53 @@
 #include <vector>
 using namespace std;
 
-
+void writeFile();
 
 int main() {
-	vector<string> names;
-	vector<double> salary;
-	string tname;
-	double tsalary;
-	ifstream arielFile;
-	arielFile.open("chili.txt");
-	
-	if (arielFile.is_open()) {
-		cout << "The file was opened:\n";
-		//reads char form txt and places in c, put c
-		for (char c = arielFile.get(); arielFile.good(); c = arielFile.get()) {
-			_putch(c);
-		}
+	//write
 
-	}
-	else if (arielFile.bad() ) {
-		cout << "Failed to open document" << endl;
+	char opt;
+	cout << "What would you like to do?" << endl;
+	cout << "(O)pen" << endl;
+	cout << "(L)oad\t" << endl;
+	cin >> opt;
+	cout << "\n";
 
+	switch (opt)
+	{
+	case 'O': case'o':
+		cout << "You chose to write a file" << endl;
+		writeFile();
+		break;
+	case'L': case'l':
+		cout << "You chose to load a file" << endl;
+		break;
+	default:
+		cout << "\aNot a valid option" << endl;
+		break;
 	}
-	else if (arielFile.eof()) {
-		cout << "Reached end of file succesfully" << endl;
-	}
-	cout << "The file has been read:\n" << endl;
+	cout << "\nThanks for using my prgram" << endl;
+
 	
-	cout << "Goodbye, thank you for using my program" << endl;
 	return 0;
+}
+
+void writeFile() {
+	cout << "Insert the name of your file: " << endl;
+	string fileName;
+	cin >> fileName;
+	ofstream wFile;
+	wFile.open(fileName + ".txt");
+	cout << "Please insert a message to keep on fil" << endl;
+	char word[20];
+	vector<string> msg;
+	while (fgets(word, 20, stdin)) {
+		msg.push_back(word);
+	}
+	
+	for (int i = 0; i < msg.size(); i++) {
+		wFile.seekp(0, std::ios::end);
+		wFile << msg[i];
+	}
+	wFile.close();
 }
